@@ -4,6 +4,7 @@
 ##Table of contents:
 - [Structs](#structs)
 - [Arrays](#arrays)
+- [Slices](#slices)
 - [Functions](#functions)
 
 
@@ -43,24 +44,39 @@ func main() {
 	ariel.sayHello()
 }
 ```
-#Arrays
+#Arrays:
 **Defining and accessing arrays:**
+```go
+func main() {
+	//declare
+	var arr [1]string
+	//set
+	arr[0] = "Hello World!"
+	//read
+	println(arr[0]) //Hello World!
+	
+	// declare and initialize
+	arr1 := [2]int{1, 2}
+	//the compiler count capacity for you
+	arr2 := [...]int{3, 4} 
+}
+```
+#Slices
+**Defining and accessing slices:**
 ```go
 func main() {
 	str := []string {"Hello"}
 
-	println(str[0])
-	// Hello
+	println(str[0]) // Hello
 }
 ```
-**Increase capacity of array:**
+**Increase capacity of slice:**
 ```go
 func main() {
 	str := []string {"Hello"}
 	str = append(str, "World!")
 
-	println(str[0], str[1])
-	//Hello World!
+	println(str[0], str[1]) //Hello World!
 }
 
 ```
