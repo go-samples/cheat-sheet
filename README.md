@@ -3,13 +3,12 @@
 
 ##Table of contents:
 - [Structs](#structs)
+- [Functions](#functions)
 
 
 ##Structs
 **Defining and accessing variables:**
 ```go
-package main
-
 type Man struct {
 	name	string
 	age		int
@@ -41,5 +40,49 @@ func (man Man) sayHello() {
 func main() {
 	ariel := Man{ "Ariel", 26 }
 	ariel.sayHello()
+}
+```
+#Functions
+**Declaration:**
+```go
+func printTwice(str string) {
+	println(str, str)
+}
+
+func main() {
+	printTwice("foo")
+}
+```
+**Returing value:**
+```go
+func add(x int, y int) int {
+	return x + y
+}
+
+func main() {
+	println(add(10, 20))
+}
+```
+**Returing multiple values:**
+```go
+import "strings"
+
+func contains(str string, word string) (res string, i int){
+	fields := strings.Fields(str)
+
+	for _, e := range fields {
+		if(e == word) {
+			i++
+			continue
+		}
+		res += e + " "
+	}
+	return res, i
+}
+
+func main() {
+	newStr, len:= contains("foo bar baz foo", "foo")
+	println("trimmed string:", newStr)
+	println("times of showing:", len)
 }
 ```
