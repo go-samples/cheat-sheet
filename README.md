@@ -10,8 +10,6 @@
 ```go
 package main
 
-import "fmt"
-
 type Man struct {
 	name	string
 	age		int
@@ -30,14 +28,14 @@ func main() {
 
 	//accessing structs
 	for _, man := range []Man {man1, man2, man3} {
-			fmt.Println(man.name)
+			println(man.name)
 	}
 }
 ```
 **Methods for structs:**
 ```go
 func (man Man) sayHello() {
-	fmt.Println("Hello buddy, my name is: ", man.name)
+	println("Hello buddy, my name is: ", man.name)
 }
 
 func main() {
