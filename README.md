@@ -84,7 +84,7 @@ func main() {
 Slices can be re-sliced, creating a new slice value that points to the same array.<br/>
 **Usage:** `slice[low:high]`
 
-```
+```go
 import "fmt"
 
 func main() {
