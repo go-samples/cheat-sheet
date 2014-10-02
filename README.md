@@ -55,7 +55,7 @@ func main() {
 	//read
 	println(arr[0]) //Hello World!
 	
-	// declare and initialize
+	//declare and initialize
 	arr1 := [2]int{1, 2}
 	//the compiler count capacity for you
 	arr2 := [...]int{3, 4} 
@@ -77,6 +77,22 @@ func main() {
 	str = append(str, "World!")
 
 	println(str[0], str[1]) //Hello World!
+}
+
+```
+**Slicing slices:** <br/>
+Slices can be re-sliced, creating a new slice value that points to the same array.<br/>
+**Usage:** slice[low:high]
+
+```
+import "fmt"
+
+func main() {
+	arr := []int{2,4,6,8,10,12,14}
+	
+	fmt.Println(arr[1:4]) // slice from index 1 to 3, Result: [4 6 8]
+	fmt.Println(arr[:4]) // missing low index implies 0, Result: [2 4 6 8]
+	fmt.Println(arr[4:]) // missing high index implies len(a), Result: [10 12 14]
 }
 
 ```
