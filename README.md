@@ -6,7 +6,7 @@
 
 
 ##Structs
-### Defining and accessing
+**Defining and accessing:**
 ```go
 package main
 
@@ -20,12 +20,10 @@ type Man struct {
 func main() {
 
 	man1 := Man{"Ariel", 26}
-	
 	man2 := Man {
 		age: 24,
 		name: "Ben",
 	}
-	
 	var man3 Man
 	man3.name = "Dan"
 	man3.age = 25
