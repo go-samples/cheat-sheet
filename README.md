@@ -3,11 +3,12 @@
 
 ##Table of contents:
 - [Structs](#structs)
+- [Arrays](#arrays)
 - [Functions](#functions)
 
 
 ##Structs
-**Defining and accessing variables:**
+**Defining and accessing structs:**
 ```go
 type Man struct {
 	name	string
@@ -42,6 +43,28 @@ func main() {
 	ariel.sayHello()
 }
 ```
+#Arrays
+**Defining and accessing arrays:**
+```go
+func main() {
+	str := []string {"Hello"}
+
+	println(str[0])
+	// Hello
+}
+```
+**Increase capacity of array:**
+```go
+func main() {
+	str := []string {"Hello"}
+	str = append(str, "World!")
+
+	println(str[0], str[1])
+	//Hello World!
+}
+
+```
+
 #Functions
 **Declaration:**
 ```go
