@@ -67,7 +67,7 @@ func main() {
 ```go
 import "strings"
 
-func contains(str string, word string) (res string, i int){
+func trim(str string, word string) (res string, i int){
 	fields := strings.Fields(str)
 
 	for _, e := range fields {
@@ -81,7 +81,7 @@ func contains(str string, word string) (res string, i int){
 }
 
 func main() {
-	newStr, len:= contains("foo bar baz foo", "foo")
+	newStr, len:= trim("foo bar baz foo", "foo")
 	println("trimmed string:", newStr)
 	println("times of showing:", len)
 }
