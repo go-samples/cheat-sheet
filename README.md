@@ -68,6 +68,7 @@ func main() {
 import "strings"
 
 func trim(str string, word string) (res string, i int){
+	//splits the string
 	fields := strings.Fields(str)
 
 	for _, e := range fields {
@@ -81,6 +82,7 @@ func trim(str string, word string) (res string, i int){
 }
 
 func main() {
+	//calling a function that return multiple values
 	newStr, len:= trim("foo bar baz foo", "foo")
 	println("trimmed string:", newStr)
 	println("times of showing:", len)
