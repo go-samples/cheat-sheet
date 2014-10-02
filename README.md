@@ -6,7 +6,7 @@
 
 
 ##Structs
-**Defining and accessing:**
+**Defining and accessing variables:**
 ```go
 package main
 
@@ -29,8 +29,19 @@ func main() {
 	man3.age = 25
 
 	//accessing structs
-	for _, man := range []Man { man1, man2, man3 } {
+	for _, man := range []Man {man1, man2, man3} {
 			fmt.Println(man.name)
 	}
+}
+```
+**Methods for structs:**
+```go
+func (man Man) sayHello() {
+	fmt.Println("Hello buddy, my name is: ", man.name)
+}
+
+func main() {
+	ariel := Man{ "Ariel", 26 }
+	ariel.sayHello()
 }
 ```
