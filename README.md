@@ -44,7 +44,7 @@ func main() {
 	ariel.sayHello()
 }
 ```
-#Arrays:
+#Arrays
 **Defining and accessing arrays:**
 ```go
 func main() {
