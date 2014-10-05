@@ -8,6 +8,7 @@ Most of the examples taken from [A Tour of Go](http://tour.golang.org/) and [The
 - [Structs](#structs)
 - [Arrays](#arrays)
 - [Slices](#slices)
+- [For statements](#for-statements)
 - [Functions](#functions)
 
 
@@ -129,6 +130,33 @@ func main() {
 	d := c[2:5]
 	printSlice(d) //[2 3 4], length=3, capacity=3
 
+}
+```
+#For statements<br/>
+Go has only one looping construct, the for loop. (the `{ }` are required!)
+```go
+func main() {
+	for i := 0; i < 10; i++ {
+		println(i)
+	}
+	
+	//You can leave the pre and post statements empty.
+	sum := 1
+	for ; sum < 1000; {
+		sum += sum
+	}
+	fmt.Println(sum)
+}
+```
+**While statement:**<br/>
+`for` is Go's `while`
+```go
+func main() {
+	sum := 1
+	for sum < 1000 {
+		sum += sum
+	}
+	fmt.Println(sum)
 }
 ```
 
