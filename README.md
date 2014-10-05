@@ -96,6 +96,38 @@ func main() {
 }
 
 ```
+**Making slices:**<br/>
+**Usage:** `make(T, n)` or `make(T, n, m)`
+```go
+func printSlice(x []int) {
+	fmt.Printf("%v, length=%d, capacity=%d\n",
+		x, len(x), cap(x))
+}
+
+func main() {
+
+	a := make([]int, 5)
+	printSlice(a) //[0 0 0 0 0], length=5, capacity=5
+
+	b := make([]int, 0, 5)
+	printSlice(b) //[], length=0, capacity=5
+
+	//We reslice the slice to add 5 to its original length
+	//We can do this because cap(slice) == 5
+	b = b[:cap(b)]
+	for i := 0; i < cap(b); i++ {
+		b[i] = i
+	}
+	printSlice(b) //[0 1 2 3 4], length=5, capacity=5
+
+	c := b[:2]
+	printSlice(c) //[0 1], length=2, capacity=5
+
+	d := c[2:5]
+	printSlice(d) //[2 3 4], length=3, capacity=3
+
+}
+```
 
 #Functions
 **Declaration:**
