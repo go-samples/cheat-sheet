@@ -1,6 +1,9 @@
 #Go Cheat Sheet
 >Useful cheat sheet for Go programming language(syntax, features, examples and more).
 
+##Credits
+Most of the examples taken from [A Tour of Go](http://tour.golang.org/) and [The Golang spec](https://golang.org/ref/spec)
+
 ##Table of contents:
 - [Structs](#structs)
 - [Arrays](#arrays)
