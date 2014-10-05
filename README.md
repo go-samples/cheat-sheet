@@ -223,7 +223,7 @@ func main() {
 		fmt.Printf("2**%d = %d\n", i, v)
     	}
     
-	 //if you only want the index, drop the "v" entirely.
+    	//if you only want the index, drop the "v" entirely.
     	for i := range pow {
         	fmt.Printf(i)
     	}
