@@ -10,6 +10,7 @@ Most of the examples taken from [A Tour of Go](http://tour.golang.org/) and [The
 - [Slices](#slices)
 - [For statements](#for-statements)
 - [Functions](#functions)
+- [Range](#range)
 
 
 ##Structs
@@ -210,5 +211,26 @@ func main() {
 	newStr, len:= trim("foo bar baz foo", "foo")
 	println("trimmed string:", newStr)
 	println("times of showing:", len)
+}
+```
+#Range
+The range form of the for loop iterates over a slice or map.
+```go
+func main() {
+	var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
+	
+    	for i, v := range pow {
+		fmt.Printf("2**%d = %d\n", i, v)
+    	}
+    
+	 //if you only want the index, drop the "v" entirely.
+    	for i := range pow {
+        	fmt.Printf(i)
+    	}
+    
+    	//or, you can skip the index or value by assigning to _
+    	for _, value := range pow {
+        	fmt.Printf("%d\n", value)
+    	}
 }
 ```
