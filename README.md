@@ -159,7 +159,13 @@ func main() {
 	fmt.Println(sum)
 }
 ```
-
+**Forever:**
+```go
+func main() {
+    for {
+    }
+}
+```
 #Functions
 **Declaration:**
 ```go
