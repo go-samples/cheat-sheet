@@ -11,6 +11,7 @@ Most of the examples taken from [A Tour of Go](http://tour.golang.org/) and [The
 - [For statements](#for-statements)
 - [Functions](#functions)
 - [Range](#range)
+- [Maps](#maps)
 
 
 ##Structs
@@ -232,5 +233,40 @@ func main() {
     	for _, value := range pow {
         	fmt.Printf("%d\n", value)
     	}
+}
+```
+#Maps
+Maps must be created with make (not new) before use
+```go
+func main() {
+	foo := make(map[string]int)
+	foo["a"] = 1
+	foo["b"] = 2
+	foo["c"] = 3
+
+	println(foo["a"], foo["b"], foo["c"]) //1 2 3
+}
+```
+**Map literals:**<br/>
+Map literals are like struct literals, but the keys are required
+```go
+type Human struct {
+	name 	string;
+	gender 	string;
+	age	 	int;
+}
+
+func main() {
+	group := map[int8]Human {
+		0: Human {
+			"Ariel M.", "Man", 26,
+		},
+		//you can omit the type from the element literal
+		1: {
+			"Dan J.", "Man", 45,
+		},
+	}
+
+	fmt.Println(group[0], group[1]) //{Ariel M. Man 26} {Dan J. Man 45}
 }
 ```
