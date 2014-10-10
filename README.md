@@ -290,7 +290,7 @@ func main() {
 }
 ```
 #Goroutines
-A goroutine is a lightweight thread managed by the Go runtime.
+A goroutine is a lightweight thread managed by the Go runtime.  
 goroutines run in the same address space, so access to shared memory **must be synchronized**.
 ```go
 import(
