@@ -321,8 +321,24 @@ func main() {
 }
 ```
 #Channels
-Channels are a typed conduit through which you can send and receive values with the channel operator, <-.  
+A channel in Go provides a connection between two goroutines, allowing them to communicate.  
 By default, sends and receives block until the other side is ready.
+```go
+//Declaring and initializing
+var c1 chan int
+c1 = make(chan int)
+//or
+c2 := make(chan int)
+	
+//Sending on a channel
+c1 <- 1
+c2 <- 2
+	
+//Receiving from a channel
+//The arrow(<-) indicates the direction of data flow
+res1, res2 := <-ch, <-ch
+```
+**Example:**
 ```go
 func seq(num int, c chan int) {
 	x, y := 0, 1
