@@ -327,10 +327,10 @@ func seq(num int, c chan int) {
 func main() {
 	//channels must be created before use
 	ch := make(chan int)
-	go seq(5, ch)
-	go seq(10, ch)
+	go seq(50, ch)
+	go seq(20, ch)
 
 	res1, res2 := <-ch, <-ch
-	println(res1, res2)
+	println(res1, res2) //12586269025 6765
 }
 ```
