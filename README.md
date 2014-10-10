@@ -13,6 +13,7 @@ Most of the examples taken from [A Tour of Go](http://tour.golang.org/) and [The
 - [Range](#range)
 - [Maps](#maps)
 - [Go Builtin](#go-builtin)
+- [Goroutines](#goroutines)
 
 
 ##Structs
@@ -286,5 +287,26 @@ func main() {
 
 	me.name, me.gender, me.age = "Ariel", "Male", 26
 	fmt.Println(*me)//{Ariel Male 26}
+}
+```
+#Goroutines
+A goroutine is a lightweight thread managed by the Go runtime.
+goroutines run in the same address space, so access to shared memory **must be synchronized**.
+```go
+import(
+    t "time"
+    f "fmt"
+)
+
+func say(s string) {
+    for i := 0; i < 5; i++ {
+        t.Sleep(100 * t.Millisecond)
+        f.Println(s)
+    }
+}
+
+func main() {
+    go say("world")
+    say("hello")
 }
 ```
