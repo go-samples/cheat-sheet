@@ -291,8 +291,17 @@ func main() {
 }
 ```
 #Goroutines
-A goroutine is a lightweight thread managed by the Go runtime.  
-goroutines run in the same address space, so access to shared memory **must be synchronized**.
+**What is goroutine?**  
+It's an independently executing function, lunched by go statement.  
+It has it's own call stack, which grows and shrinks as required.  
+It's very cheap, It's practical to have thousands, even hundreds of thousands of goroutines.  
+
+It's not thread.  
+There might be only one thread in a program with thousands goroutines.  
+
+Instead, goroutines are multiplexed dynamically onto threads as needed to keep all goroutines running.  
+But if you think of it as a very cheap thread, you won't be far off.  
+<i>**Credits:** Rob Pike presentation</i>  
 ```go
 import(
     t "time"
