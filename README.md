@@ -12,6 +12,7 @@ Most of the examples taken from [A Tour of Go](http://tour.golang.org/) and [The
 - [Functions](#functions)
 - [Range](#range)
 - [Maps](#maps)
+- [Go Builtin](#go-builtin)
 
 
 ##Structs
@@ -268,5 +269,22 @@ func main() {
 	}
 
 	fmt.Println(group[0], group[1]) //{Ariel M. Man 26} {Dan J. Man 45}
+}
+```
+#Go Builtin  
+**new:** The expression `new(T)` allocates a zeroed T value and returns a pointer to it.
+```go
+type Human struct {
+	name 	string;
+	gender 	string;
+	age	 	int;
+}
+
+func main() {
+	me := new(Human)
+	fmt.Println(*me)//{  0}
+
+	me.name, me.gender, me.age = "Ariel", "Male", 26
+	fmt.Println(*me)//{Ariel Male 26}
 }
 ```
