@@ -14,6 +14,7 @@ Most of the examples taken from [A Tour of Go](http://tour.golang.org/) and [The
 - [Maps](#maps)
 - [Go Builtin](#go-builtin)
 - [Goroutines](#goroutines)
+- [Channels](#channels)
 
 
 ##Structs
@@ -308,5 +309,28 @@ func say(s string) {
 func main() {
     go say("world")
     say("hello")
+}
+```
+#Channels
+Channels are a typed conduit through which you can send and receive values with the channel operator, <-.  
+By default, sends and receives block until the other side is ready.
+```go
+func seq(num int, c chan int) {
+	x, y := 0, 1
+	for num != 0 {
+		x, y = y, x + y
+		num--
+	}
+	c <-x
+}
+
+func main() {
+	//channels must be created before use
+	ch := make(chan int)
+	go seq(5, ch)
+	go seq(10, ch)
+
+	res1, res2 := <-ch, <-ch
+	println(res1, res2)
 }
 ```
