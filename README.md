@@ -15,6 +15,7 @@ Most of the examples taken from [A Tour of Go](http://tour.golang.org/) and [The
 - [Go Builtin](#go-builtin)
 - [Goroutines](#goroutines)
 - [Channels](#channels)
+- [Buffered Channels](#buffered-channels)
 
 
 ##Structs
@@ -382,5 +383,22 @@ func main() {
 		fmt.Printf("You say: %q\n", <-c) //Receive expression is just a value
 	}
 	fmt.Println("You're boring! I'm leaving...")
+}
+```
+#Buffered Channels
+Go channels can be also be created with a buffer.  
+Buffering removes synchronization.  
+Buffering makes them more like Erlang's mailboxes.  
+
+Buffered channels can be important for some problems, but they are more subtle to reason about.  
+Sends to a buffered channel block only when the buffer is full. Receives block when the buffer is empty.  
+**Usage:** `ch := make(chan int, length)`  
+```go
+func main() {
+    c := make(chan int, 2)
+    c <- 1
+    c <- 2
+    fmt.Println(<-c)
+    fmt.Println(<-c)
 }
 ```
