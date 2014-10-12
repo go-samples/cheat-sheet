@@ -410,7 +410,7 @@ func main() {
 }
 ```
 **Multiplexing:**
-These programs make Joe and Ann count in lockstep.
+These programs make Joe and Ann count in lockstep.  
 We can instead use a fan-in function to let whosoever is ready talk.  
 ```go
 func fanIn(input1, input2 <-chan string) <-chan string {
