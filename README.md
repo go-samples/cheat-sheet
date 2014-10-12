@@ -2,7 +2,7 @@
 >Useful cheat sheet for Go programming language(syntax, features, examples and more).
 
 ##Credits
-Most of the examples taken from [A Tour of Go](http://tour.golang.org/) and [The Golang spec](https://golang.org/ref/spec)
+Most of the examples taken from [A Tour of Go](http://tour.golang.org/), [The Golang spec](https://golang.org/ref/spec) and Google I/O talks.
 
 ##Table of contents:
 - [Structs](#structs)
@@ -385,6 +385,51 @@ func main() {
 	fmt.Println("You're boring! I'm leaving...")
 }
 ```
+**Generator:**
+Generator: function that returns a channel.  
+Channels are first-class values, just like strings and integers.  
+```go
+func boring(msg string) <-chan string { // Returns receive-only channel of strings.
+	c := make(chan string)
+	go func() { // We launch the goroutine from inside the function
+		for i := 0; ; i++ {
+			c <- fmt.Sprintf("%s %d", msg, i) //Expression to be sent can be any suitable value.
+			time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
+		}
+	}()
+	return c // Return the channel to the caller
+}
+
+func main() {
+	joe, ann := boring("Joe"), boring("Ann")
+	for i:= 0; i < 5; i++ {
+		fmt.Printf("Joe say: %q\n", <-joe)
+		fmt.Printf("Ann say: %q\n", <-ann)
+	}
+	fmt.Println("You're both boring; I'm leaving...")
+}
+```
+**Multiplexing:**
+These programs make Joe and Ann count in lockstep.
+We can instead use a fan-in function to let whosoever is ready talk.  
+```go
+func fanIn(input1, input2 <-chan string) <-chan string {
+	c := make(chan string)
+	go func () { for { c <- <-input1 } }()
+	go func () { for { c <- <-input2 } }()
+	return c
+}
+
+func main() {
+	// We actually decoupled the execution
+	c := fanIn(boring("Joe"), boring("Ann"))
+	for i:= 0; i < 20; i++ {
+		fmt.Println(<-c)
+	}
+	fmt.Println("You're both boring; I'm leaving...")
+}
+```
+
 #Buffered Channels
 Go channels can be also be created with a buffer.  
 Buffering removes synchronization.  
