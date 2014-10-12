@@ -430,6 +430,22 @@ func main() {
 	fmt.Println("You're both boring; I'm leaving...")
 }
 ```
+Lets Rewrite our fanIn function using select, (only one goroutine is needed).  
+see: [Select statement](#select)
+```go
+func fanIn(input1, input2 <-chan string) <-chan string {
+	c := make(chan string)
+	go func() {
+		for {
+			select {
+			case s := <-input1: c <- s
+			case s := <-input2: c <- s
+			}
+		}
+	}()
+	return c
+}
+```
 
 #Buffered Channels
 Go channels can be also be created with a buffer.  
