@@ -16,6 +16,7 @@ Most of the examples taken from [A Tour of Go](http://tour.golang.org/), [The Go
 - [Goroutines](#goroutines)
 - [Channels](#channels)
 - [Buffered Channels](#buffered-channels)
+- [Select](#select)
 
 
 ##Structs
@@ -445,5 +446,31 @@ func main() {
     c <- 2
     fmt.Println(<-c)
     fmt.Println(<-c)
+}
+```
+#Select
+A control structure unique to concurrency.  
+The reason channels and goriutines are built in into the language.  
+
+The select statement provides another way to handle multiple channels.  
+It's like a switch statement, but each case is a communication.  
+* All channels are evaluated.  
+* Selection blocks until one communication can proceed, which then does.  
+* If multiple can proceed, select choose pseudo-randomly.  
+* A default clause, if present, executes immediately if no channel is ready.  
+```go
+func main() {
+	c1, c2, c3 := boring("foo"), boring("bar"), boring("baz")
+	time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond) // Add timeout
+	select {
+	case v1 := <-c1:
+		fmt.Printf("Received %v from c1\n", v1)
+	case v2 := <-c2:
+		fmt.Printf("Received %v from c2\n", v2)
+	case v3 := <-c3:
+		fmt.Printf("Received %v from c3\n", v3)
+	default:
+		fmt.Printf("No one was ready to communicate\n")
+	}
 }
 ```
