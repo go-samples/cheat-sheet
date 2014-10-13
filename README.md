@@ -446,6 +446,37 @@ func fanIn(input1, input2 <-chan string) <-chan string {
 	return c
 }
 ```
+**range and close:**
+A sender can close a channel to indicate that no more values will be sent.  
+Receivers can test whether a channel has been closed by assigning a second parameter to the receive expression.  
+**Usage:**
+```go
+// ok will be false if there are no more values to receive 
+// and the channel is closed.
+v, ok := <-ch
+```
+```go
+func fibonacci(n int, c chan int) {
+    x, y := 0, 1
+    for i := 0; i < n; i++ {
+        c <- x
+        x, y = y, x+y
+    }
+    close(c)
+}
+
+func main() {
+    c := make(chan int, 10)
+    go fibonacci(cap(c), c)
+    //the loop receives values from the channel repeatedly until it is closed.
+    for i := range c {
+        fmt.Println(i)
+    }
+}
+```
+**Note:**
+* Only the sender should close a channel.
+* You don't usually need to close the channels. closing is only necessary when the receiver must be told there are no more values coming, e.g: range loop.
 
 #Buffered Channels
 Go channels can be also be created with a buffer.  
