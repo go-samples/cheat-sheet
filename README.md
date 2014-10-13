@@ -446,7 +446,7 @@ func fanIn(input1, input2 <-chan string) <-chan string {
 	return c
 }
 ```
-**range and close:**
+`range` and `close`:  
 A sender can close a channel to indicate that no more values will be sent.  
 Receivers can test whether a channel has been closed by assigning a second parameter to the receive expression.  
 **Usage:**
