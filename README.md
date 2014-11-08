@@ -386,8 +386,7 @@ func main() {
 	fmt.Println("You're boring! I'm leaving...")
 }
 ```
-**Generator:**
-Generator: function that returns a channel.  
+**Generator:** function that returns a channel.  
 Channels are first-class values, just like strings and integers.  
 ```go
 func boring(msg string) <-chan string { // Returns receive-only channel of strings.
