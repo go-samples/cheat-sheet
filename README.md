@@ -17,6 +17,7 @@ Most of the examples taken from [A Tour of Go](http://tour.golang.org/), [The Go
 - [Channels](#channels)
 - [Buffered Channels](#buffered-channels)
 - [Select](#select)
+- [Interfaces](#interfaces)
 
 
 ##Structs
@@ -518,5 +519,29 @@ func main() {
 	default:
 		fmt.Printf("No one was ready to communicate\n")
 	}
+}
+```
+#Interfaces
+An interface type is defined by a set of methods.  
+A value of interface type can hold any value that implements those methods.  
+```go
+type Person struct {
+	Name string
+	Age  int
+}
+
+func (p Person) String() string {
+	return fmt.Sprintf("%v (%v years)", p.Name, p.Age)
+}
+
+func main() {
+	a := Person{"Arthur Dent", 42}
+	z := Person{"Zaphod Beeblebrox", 9001}
+	
+	// Stringer is implemented by any value that has a String method,
+	// which defines the “native” format for that value.
+	// The String method is used to print values passed as an operand 
+	// to any format that accepts a string or to an unformatted printer such as Print.
+	fmt.Println(a, z)
 }
 ```
