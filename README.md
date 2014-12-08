@@ -546,3 +546,41 @@ func main() {
 	// Print: `Arthur Dent (42 years) Zaphod Beeblebrox (9001 years)`
 }
 ```
+**Polymorphism in Go:**
+```go
+// Create Shaper interface that has a single function
+// `Area` that returns an int.
+type Shaper interface {
+	Area() int
+}
+
+type Rectangle struct {
+	length, width int
+}
+
+type Square struct {
+	side int
+}
+
+// Rectangle and Square have the function `Area` with the same
+// signature of Shaper.
+// Therefore, Rectangle and Sqaure implements the interface Shaper.
+func (r Rectangle) Area() int {
+	return r.length * r.width
+}
+
+func (s Square) Area() int {
+	return s.side * s.side
+}
+
+func main() {
+	r := Rectangle{length: 15, width: 15}
+	s := Square{side: 10}
+	// Create slice of shapes
+	shapes := []Shaper{r, s}
+	// Iterate over the slice and print the area of each shape
+	for _, shape := range shapes {
+		fmt.Println(`Area of shape: `, shape.Area())
+	}
+}
+```
