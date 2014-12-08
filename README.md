@@ -577,7 +577,7 @@ func main() {
 	r := Rectangle{length: 15, width: 15}
 	s := Square{side: 10}
 	// Create slice of shapes
-	shapes := []Shaper{r, s}
+	shapes := [...]Shaper{r, s}
 	// Iterate over the slice and print the area of each shape
 	for _, shape := range shapes {
 		fmt.Println(`Area of shape: `, shape.Area())
