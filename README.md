@@ -18,6 +18,7 @@ Most of the examples taken from [A Tour of Go](http://tour.golang.org/), [The Go
 - [Buffered Channels](#buffered-channels)
 - [Select](#select)
 - [Interfaces](#interfaces)
+- [Reflection](#reflection)
 
 
 ##Structs
