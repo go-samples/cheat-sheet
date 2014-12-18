@@ -320,6 +320,8 @@ func say(s string) {
 }
 
 func main() {
+    // The `go` statement runs a function as usual, but doesn't make the caller wait.
+    // This functionality is analogous to the & on the end of the shell command
     go say("world")
     say("hello")
 }
