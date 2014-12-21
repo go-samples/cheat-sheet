@@ -19,6 +19,7 @@ Most of the examples taken from [A Tour of Go](http://tour.golang.org/), [The Go
 - [Select](#select)
 - [Interfaces](#interfaces)
 - [Reflection](#reflection)
+- [Formatting](#formatting)
 
 
 ##Structs
@@ -587,3 +588,6 @@ func main() {
 	}
 }
 ```
+#Formatting
+**Indentation:** Use tabs (width = 8) for indentation and blanks for alignment. Use spaces only if you must.  
+**Line length:** Go has no line length limit. Don't worry about overflowing a punched card. If a line feels too long, wrap it and indent with an extra tab.  
