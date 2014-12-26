@@ -12,6 +12,7 @@ Most of the examples taken from [A Tour of Go](http://tour.golang.org/), [The Go
 - [Functions](#functions)
 - [Range](#range)
 - [Maps](#maps)
+- [Packages](#packages)
 - [Go Builtin](#go-builtin)
 - [Goroutines](#goroutines)
 - [Channels](#channels)
@@ -277,6 +278,35 @@ func main() {
 
 	fmt.Println(group[0], group[1]) //{Ariel M. Man 26} {Dan J. Man 45}
 }
+```
+#Packages
+**import** keyword:
+```go
+import "fmt"
+import "math"
+
+//or use:
+import (
+	"fmt"
+	"math"
+)
+```
+define local name("f") to "fmt" package:
+```go
+import f "fmt"
+
+func main() {
+	f.Println(`Hello World!`)
+}
+```
+If an explicit period (.) appears instead of a name, all the package's exported identifiers will be declared in the current file's file block and can be accessed without a qualifier.  
+```go
+import . "fmt"
+
+func main() {
+	Println(`Hello World!`)
+}
+
 ```
 #Go Builtin  
 **new:** The expression `new(T)` allocates a zeroed T value and returns a pointer to it.
