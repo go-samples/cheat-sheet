@@ -8,6 +8,7 @@ Most of the examples taken from [A Tour of Go](http://tour.golang.org/), [The Go
 - [Structs](#structs)
 - [Arrays](#arrays)
 - [Slices](#slices)
+- [Constants](#constants)
 - [For statements](#for-statements)
 - [Functions](#functions)
 - [Range](#range)
@@ -141,6 +142,25 @@ func main() {
 	d := c[2:5]
 	printSlice(d) //[2 3 4], length=3, capacity=3
 
+}
+```
+#Constants
+constants can be character, string, boolean, or numeric values.  
+**Note:** constants cannot be declared using the `:=` syntax.
+```go
+type ByteSize float64
+
+const (
+        _ = iota // Ignore first value(i.e: 0)
+        KB ByteSize = 1 <<(10 * iota)
+        MB
+        GB
+        TB
+        PB
+)
+
+func main() {
+        fmt.Println(KB, MB, GB, TB, PB) // 1024 1.048576e+06 1.0737418....
 }
 ```
 #For statements<br/>
