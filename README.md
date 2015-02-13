@@ -60,6 +60,21 @@ func main() {
 	ariel.sayHello()
 }
 ```
+**Anonymous structs:**  
+```go
+func main() {
+	// Cheaper and safer than using map[string]interface{}.
+	list := struct {
+		group	string
+		users	[]string
+	}{
+		"Students",
+		[]string{"Tom", "Joran", "Roger", "Cati"},
+	}
+	fmt.Println(list)
+}
+```
+
 #Arrays
 **Defining and accessing arrays:**
 ```go
