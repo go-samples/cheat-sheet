@@ -434,7 +434,7 @@ func main() {
 
 **Ping pong table example:**  
 <i>**Note:** this example was presented at Google I/O 2013 by Sameer Ajmani</i>
-```
+```go
 type Ball struct {
 	hits	int
 }
