@@ -6,7 +6,7 @@ Most of the examples taken from [A Tour of Go](http://tour.golang.org/), [The Go
 
 ##Table of contents:
 - [Structs](#structs)
-  - [Structs Embedding(Subclassing)](structs-embedding)
+  - [Structs Embedding(Subclassing)](#structs-embedding)
 - [Arrays](#arrays)
 - [Slices](#slices)
 - [Constants](#constants)
