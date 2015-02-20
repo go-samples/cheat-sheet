@@ -6,6 +6,7 @@ Most of the examples taken from [A Tour of Go](http://tour.golang.org/), [The Go
 
 ##Table of contents:
 - [Structs](#structs)
+  - [Structs Embedding(Subclassing)](structs-embedding)
 - [Arrays](#arrays)
 - [Slices](#slices)
 - [Constants](#constants)
@@ -74,8 +75,45 @@ func main() {
 	fmt.Println(list)
 }
 ```
+### Structs embedding
+```go
+type Person struct {
+	Name	string
+	Age	int
+}
 
-#Arrays
+func (p Person) SayHello() {
+	fmt.Printf("Hello, my name is: %s\n", p.Name)
+}
+
+type Student struct {
+	Person
+	School	string
+}
+
+type Professor struct {
+	Person
+	Students	[]Student
+}
+
+// Method overriding
+func (p Professor) SayHello() {
+	fmt.Printf("Hello students, I'm your professor and my name is: %s\n", p.Name)
+}
+
+
+func main() {
+	ariel := Student{Person{"Ariel", 26}, "MIT"}
+	cati := Student{Person{"Caitlin", 24}, "MIT"}
+	dracula := Professor{Person{"Dracula", 190}, []Student{ariel, cati}}
+
+	ariel.SayHello()	// Hello, my name is: Ariel
+	cati.SayHello()		// Hello, my name is: Caitlin
+	dracula.SayHello()	// Hello students, I'm your professor and my name is: Dracula
+}
+```
+
+##Arrays
 **Defining and accessing arrays:**
 ```go
 func main() {
