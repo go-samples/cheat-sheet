@@ -261,19 +261,20 @@ func main() {
 func Typeof(t interface{}) {
 	// there are no "break" statements referring to the "switch" statement
 	// instead, it possibly labeled "fallthrough" statement
-        switch t.(type) {
-        case string:
-                fmt.Println("string")
-        case int, uint, float32:
-                fmt.Println("number")
-        case bool:
-                fmt.Println("boolean")
-        case nil:
-                fmt.Println("nil")
+	switch t.(type) {
+	case string:
+		fmt.Println("string")
+	case int, uint, float32:
+		fmt.Println("number")
+	case bool:
+		fmt.Println("boolean")
+	case nil:
+		fmt.Println("nil")
         // ...
-        default:
-                fmt.Println("undefined")
-        }
+        // ...
+	default:
+		fmt.Println("undefined")
+	}
 }
 
 func main() {
@@ -281,7 +282,7 @@ func main() {
         switch {
         case i%2 == 0:
                 fmt.Printf("The value %d is even\n", i); fallthrough
-        // Can get multiple expression
+        // Can get multiple expressions
         // case i > 1, i > 2, ...
         case i > 10:
                 fmt.Println("And greater than 10")
