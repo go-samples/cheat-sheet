@@ -11,6 +11,7 @@ Most of the examples taken from [A Tour of Go](http://tour.golang.org/), [The Go
 - [Slices](#slices)
 - [Constants](#constants)
 - [For statements](#for-statements)
+- [Switch statements](#switch-statements)
 - [Functions](#functions)
 - [Range](#range)
 - [Maps](#maps)
@@ -254,6 +255,44 @@ func main() {
     }
 }
 ```
+
+#Switch statements
+```go
+func Typeof(t interface{}) {
+	// there are no "break" statements referring to the "switch" statement
+	// instead, it possibly labeled "fallthrough" statement
+        switch t.(type) {
+        case string:
+                fmt.Println("string")
+        case int, uint, float32:
+                fmt.Println("number")
+        case bool:
+                fmt.Println("boolean")
+        case nil:
+                fmt.Println("nil")
+        // ...
+        default:
+                fmt.Println("undefined")
+        }
+}
+
+func main() {
+        i := 100
+        switch {
+        case i%2 == 0:
+                fmt.Printf("The value %d is even\n", i); fallthrough
+        // Can get multiple expression
+        // case i > 1, i > 2, ...
+        case i > 10:
+                fmt.Println("And greater than 10")
+        }
+        
+        Typeof("foo")	// string
+        Typeof(12)	// number
+        Typeof(true)	// boolean
+}
+```
+
 #Functions
 **Declaration:**
 ```go
