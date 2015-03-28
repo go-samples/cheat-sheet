@@ -39,7 +39,6 @@ type Man struct {
 }
 
 func main() {
-
 	man1 := Man{"Ariel", 26}
 	man2 := Man {
 		age: 24,
@@ -78,6 +77,12 @@ func main() {
 		[]string{"Tom", "Joran", "Roger", "Cati"},
 	}
 	fmt.Println(list)
+	
+	// using struct instead of map[string]int
+	vertex := struct {
+		X, Y int
+	}{2, 5}
+	fmt.Println(vertex.X, vertex.Y)
 }
 ```
 ### Structs embedding
