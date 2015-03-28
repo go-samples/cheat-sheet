@@ -675,6 +675,34 @@ func main() {
     fmt.Println(<-c)
 }
 ```
+**Example 2:***
+```go
+func publish(input chan int) {
+	for {
+		n := rand.Intn(1e3)
+		time.Sleep(time.Duration(n) * time.Millisecond)
+		input <- n
+	}
+}
+
+func main() {
+	jobs := make(chan int, 2)
+
+	// Two publishers
+	go publish(jobs)
+	go publish(jobs)
+
+	// One consumer
+	go func() {
+		for job := range jobs {
+			fmt.Println(job)
+		}
+	}()
+	// Sleep some time to see it in action.
+	time.Sleep(time.Second * 10)
+}
+```
+
 #Select
 A control structure unique to concurrency.  
 The reason channels and goriutines are built in into the language.  
